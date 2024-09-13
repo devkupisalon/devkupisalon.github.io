@@ -6,56 +6,18 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Test Telegram WebApps API</title>
    <script src="https://telegram.org/js/telegram-web-app.js"></script> <!--Подключаем скрипт от телеграм-->
-
-   <style>
-      body{
-         color: var(--tg-theme-text-color);
-         background: var(--tg-theme-bg-color);
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         font-size: 18px;
-      }
-
-      .hint{
-         color: var(--tg-theme-hint-color);
-      }
-
-      .link{
-         color: var(--tg-theme-link-color);
-      }
-
-      .button{
-         background: var(--tg-theme-button-color);
-         color: var(--tg-theme-button-text-color);
-         border: none;
-         font-size: 18px;
-      }
-
-      .button:not(:last-child){
-         margin-bottom: 20px
-      }
-
-      #usercard{
-         text-align: center;
-      }
-   </style>
 </head>
 
 <body>
-   <p>Just text</p> <!--Просто текст для проверки-->
-   <button id="btn" class="button" onclick="open()">Start Work</button>
-</body>
+   <iframe id="myFrame" width="100%" height="500px"></iframe>
 
-<script>
-   const tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
-   tg.ready();
-   tg.expand(); //расширяем на все окно  
-   
-     function open() {
-         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=${tg.initDataUnsafe.user.id}`;
-         tg.openLink(url, { try_instant_view: true });
-      }
-   open();
-</script>
+   <script>
+      const tg = window.Telegram.WebApp;
+      tg.expand();
+
+      const iframe = document.getElementById("myFrame");
+      const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=${tg.initDataUnsafe.user.id}`;
+      iframe.src = url;
+   </script>
+</body>
 </html>
