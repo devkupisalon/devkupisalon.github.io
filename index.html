@@ -26,13 +26,24 @@
 
    <script>
       const tg = window.Telegram.WebApp;
-      tg.showAlert(`https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=${tg.initDataUnsafe.user.id}`);
       tg.expand();
+
+      const idMap = {
+        "Закройщик": ['290406947'],
+        "Обивщик": ['2090891587']
+      };
+
+      function getKeyByValue(object, value) {
+         return Object.keys(object).find(key => object[key].includes(value));
+       }
+      
       function test() {
-      const iframe = document.getElementById("myFrame");
-      const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=${tg.initDataUnsafe.user.id}`;
-      iframe.src = url;
+         const iframe = document.getElementById("myFrame");
+         const resposible = getKeyByValue(idMap, tg.initDataUnsafe.user.id);
+         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=${responsible}`;
+         iframe.src = url;
       }
+      
       test();
    </script>
 </body>
