@@ -37,15 +37,15 @@
          return Object.keys(object).find(key => object[key].includes(value));
        }
       
-      function test() {
-         const iframe = document.getElementById("myFrame");
-         const responsible = getKeyByValue(idMap, tg.initDataUnsafe.user.id);
-         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=${responsible}`;
-         // iframe.src = url;
-         return url;
-      }
+      // function test() {
+         // const iframe = document.getElementById("myFrame");
+         // const responsible = getKeyByValue(idMap, tg.initDataUnsafe.user.id);
+         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=Закройщик`;
+         iframe.src = url;
+         // return url;
+      // }
 
-      window.location.replace(test());
+      // window.location.replace(test());
       
       // test();
    </script>
