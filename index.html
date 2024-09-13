@@ -4,7 +4,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Test Telegram WebApps API</title>
-   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<!--    <script src="https://telegram.org/js/telegram-web-app.js"></script> -->
    
  <style>
       body, html {
@@ -25,8 +25,8 @@
    <iframe id="myFrame"></iframe>
 
    <script>
-      const tg = window.Telegram.WebApp;
-      tg.expand();
+      // const tg = window.Telegram.WebApp;
+      // tg.expand();
 
       const idMap = {
         "Закройщик": ['290406947'],
@@ -38,8 +38,8 @@
        }
       
          const iframe = document.getElementById("myFrame");
-         const responsible = getKeyByValue(idMap, tg.initDataUnsafe.user.id);
-         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=${responsible}`;
+         // const responsible = getKeyByValue(idMap, tg.initDataUnsafe.user.id);
+         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=Закройщик`;
          iframe.src = url;
       
    </script>
