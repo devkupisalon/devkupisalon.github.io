@@ -124,22 +124,21 @@ input[type="tel"] {
     </div>
 
    <script>
-         const tg = window.Telegram.WebApp;
-   tg.expand();
+   const tg = window.Telegram.WebApp;
    tg.ready();
+   tg.expand();
    tg.enableClosingConfirmation();
-   tg.BackButton.show();
    tg.setBottomBarColor("bottom_bar_bg_color");
 
       const {
-  bg_color,
-  text_color,
-  hint_color,
-  button_color,
-  button_text_color,
-  secondary_bg_color,
-         header_bg_color
-} = Telegram.WebApp.themeParams;
+        bg_color,
+        text_color,
+        hint_color,
+        button_color,
+        button_text_color,
+        secondary_bg_color,
+        header_bg_color
+        } = Telegram.WebApp.themeParams;
 
 const fields = {
   name: '#manager-name ',
@@ -154,9 +153,6 @@ const setCheckmark = s => {
 const fill_tg = document.querySelector('.fill-tg ');
 const n = document.getElementById('manager-name ');
 const ph = document.getElementById('manager-phone ');
-
-tg.BackButton.show();
-tg.setBottomBarColor("bottom_bar_bg_color");
 
 fill_tg.addEventListener('click ', async () => {
   await tg.requestContact(async (shared, callback) => {
