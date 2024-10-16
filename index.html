@@ -349,7 +349,7 @@
             var timeOptions = "";
             for (var h = 9; h <= 20; h++) {
                 var hourString = h.toString().padStart(2, "0");
-                for (var m = 0; m < 60; m += 15) {
+                for (var m = 0; m < 60; m += 10) {
                     var minuteString = m.toString().padStart(2, "0");
                     var timeString = `${hourString}:${minuteString}`;
                     timeOptions += `<option value="${timeString}">${timeString}</option>`;
