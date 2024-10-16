@@ -353,8 +353,7 @@
             let car_values;
             try {
                 const response = await fetch('https://script.google.com/macros/s/AKfycbxm7MN6eie82BvGYo_fTD_62WxS7eoVLHFTQ4DQ9qo1NEpIYxJCK0fBntN1VnbAR028/exec', {
-                    method: 'POST',
-                    payload: JSON.stringify({ brands })
+                    method: 'POST'
                 });
                 const values = await response.json();
                 car_values = Object.values(values);
