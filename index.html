@@ -210,7 +210,7 @@ function validateName(input) {
   return { manager_name, phone };
 }
 
-      tg.MainButton.show();
+  tg.MainButton.show();
   tg.MainButton.setParams({ has_shine_effect: true, text: 'Продолжить ', });
 
   tg.onEvent('mainButtonClicked ', async (event) => {
@@ -233,7 +233,6 @@ function validateName(input) {
        // window.location.href = url;
        
       iframe.style.display = "block";
-        }
       } catch (error) {
         tg.showPopup({ title: 'Error ', message: error });
         tg.MainButton.hideProgress();
