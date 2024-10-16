@@ -524,7 +524,7 @@
             if (name && phone && date && time && gosnum && car && model && buttonValues) {
 
                 try {
-                    const url = `https://script.google.com/macros/s/AKfycbwJaIEcmsz0rNODWI08ivuD-QGIOKjs4xG7j-0L_HAb4AP4HA6Hy19sWCKAplQPsE0/exec?phone=${encodeURIComponent(phone)}&name=${encodeURIComponent(name)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&gosnum=${encodeURIComponent(gosnum)}&car=${encodeURIComponent(car)}&model=${encodeURIComponent(model)}&buttonValues=${encodeURIComponent(buttonValues)}`;                    // iframe.src = url;
+                    const url = `https://script.google.com/macros/s/AKfycbwJaIEcmsz0rNODWI08ivuD-QGIOKjs4xG7j-0L_HAb4AP4HA6Hy19sWCKAplQPsE0/exec?bg_color=${encodeURIComponent(bg_color)}&phone=${encodeURIComponent(phone)}&name=${encodeURIComponent(name)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&gosnum=${encodeURIComponent(gosnum)}&car=${encodeURIComponent(car)}&model=${encodeURIComponent(model)}&buttonValues=${encodeURIComponent(buttonValues)}`;                    // iframe.src = url;
 
                     const containerToHide = document.querySelector('.container ');
                     containerToHide.style.display = "none";
