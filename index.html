@@ -199,8 +199,8 @@ fill_tg.addEventListener('click', async () => {
   });
 });
 
-     async function fetchData() {
-        try {
+function getCarBrandsAndModels() {
+  try {
           const response = await fetch('https://script.google.com/macros/s/AKfycbxm7MN6eie82BvGYo_fTD_62WxS7eoVLHFTQ4DQ9qo1NEpIYxJCK0fBntN1VnbAR028/exec', { 
             method: 'POST'
           });
@@ -211,9 +211,43 @@ fill_tg.addEventListener('click', async () => {
           // Обработка ошибок
           console.error(err);
         }
+  
+    const carBrandsSelect = document.getElementById("car-brands-select");
+    const carModelsSelect = document.getElementById("car-models-select");
+
+    for (let row of data) {
+      const brand = row[0]; // Марка авто
+      const option = document.createElement("option");
+      option.text = brand;
+      carBrandsSelect.add(option);
+    }
+
+    function getCarModels() {
+      const selectedBrand = carBrandsSelect.value;
+
+      carModelsSelect.innerHTML = "";
+      carModelsSelect.disabled = true;
+
+      for (let [brand, ...models] of data) {
+        if (brand === selectedBrand) {
+          for (let model of models) {
+            const option = document.createElement("option");
+            option.text = model;
+            carModelsSelect.add(option);
+          }
+        }
       }
 
-const car_values = await fetchData();
+      if (carModelsSelect.options.length > 0) {
+        carModelsSelect.disabled = false;
+      }
+    }
+
+    carBrandsSelect.onchange = getCarModels;
+  }).getBrands(); // Замените на вашу функцию обращения к Гугл таблице
+}
+
+getCarBrandsAndModels();
 
 function formatPhoneNumber(input) {
 
