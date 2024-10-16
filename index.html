@@ -201,9 +201,8 @@ function validateName(input) {
   const data = Object.fromEntries(
     Object.entries(fields).map(([key, selector]) => [key, document.querySelector(selector).value])
   );
-
  
-  return { name, phone };
+  return data;
 }
 
   tg.MainButton.show();
