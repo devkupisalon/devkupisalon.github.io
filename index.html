@@ -2,21 +2,97 @@
 <html>
 <head>
    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Test Telegram WebApps API</title>
-<!--    <script src="https://telegram.org/js/telegram-web-app.js"></script> -->
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <title>Test Telegram WebApps</title>
+   <script src="https://telegram.org/js/telegram-web-app.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://www.gstatic.com/charts/loader.js"></script>
    
  <style>
-      body, html {
-         height: 100%;
-         margin: 0;
-         padding: 0;
+      body {
+          font-family: Arial, sans-serif;
+          color: var(--tg-theme-text-color);
+          background: var(--tg-theme-bg-color);
+          padding-top: 40px;
       }
-
-      #myFrame {
-         width: 100%;
-         height: 100%;
-         border: none;
+      
+      .container {
+          width: fit-content;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          height: 700px;
+          margin: 0 auto;
+          padding: 10px 20px;
+          border-radius: 20px;
+          background-color: var(--tg-theme-header-bg-color);
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+      }
+      
+      p {
+          margin-bottom: 20px;
+          color: var(--tg-theme-hint-color);
+      }
+      
+      .button,
+      .fill-tg {
+          height: 40px;
+          font-weight: bold;
+          font-size: 16px;
+          width: 100%;
+          margin: 0 auto;
+          padding: 10px 20px;
+          color: var(--tg-theme-button-text-color);
+          background: var(--tg-theme-button-color);
+          border-radius: 20px;
+          border: none;
+      }
+      
+      @media only screen and (min-width: 768px) {
+          .container {
+              max-width: 400px;
+          }
+      }
+      
+      input:invalid {
+          border-color: red;
+      }
+      
+      input:valid {
+          border: 2px solid #007bff;
+      }
+      
+      .input-form {
+          margin-top: 10px;
+          display: flex;
+          flex-wrap: wrap;
+      }
+      
+      .input-label {
+          text-align: center;
+          width: calc(23% - 10px);
+          font-weight: bold;
+          margin-right: 10px;
+          margin-bottom: 20px;
+          background-color: var(--tg-theme-button-color);
+          color: var(--tg-theme-button-text-color);
+          padding: 10px 20px;
+          border-radius: 20px;
+      }
+      
+      input[type="text"],
+      input[type="tel"] {
+          width: calc(55% - 10px);
+          color: var(--tg-theme-text-color);
+          padding: 10px 20px;
+          border-radius: 20px;
+          margin-bottom: 20px;
+          background-color: var(--tg-theme-bg-color);
+      }
+      
+      button:hover {
+          transform: scale(1.05);
       }
    </style>
    
@@ -24,21 +100,92 @@
 <body>
    <iframe id="myFrame"></iframe>
 
+     <div class="container">
+        <form id="partner-form">
+
+            <div class="input-form">
+                <div class="input-label" id="manager-name-label">ФИО</div>
+                <input class="input" type="text" id="manager-name" placeholder="Name" required
+                    oninput="validateName(event.target)">
+                <div class="input-label" id="manager-phone-label">Телефон</div>
+                <input class="input" type="tel" id="manager-phone" placeholder="+79999999999" required
+                    oninput="formatPhoneNumber(this)">
+                <div class="input-label" id="manager-email-label">Email</div>
+                <input class="input" type="text" id="manager-email" placeholder="example@mail.com" required
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}">
+                    <p id="fill-text">Вы можете заполнить ФИО и номер телефона, из телеграма</p>
+                <button class="fill-tg" id="'autofill-tg">Поделиться контактом</button>
+            </div>
+        </form>
+    </div>
+
    <script>
-      // const tg = window.Telegram.WebApp;
-      // tg.expand();
+         const tg = window.Telegram.WebApp;
+   tg.expand();
 
-      const idMap = {
-        "Закройщик": ['290406947'],
-        "Обивщик": ['2090891587']
-      };
+const fields = {
+  manager_name: '#manager-name',
+  phone: '#manager-phone',
+  email: '#manager-email',
+};
 
-      function getKeyByValue(object, value) {
-         return Object.keys(object).find(key => object[key].includes(value));
-       }
-      
+const setCheckmark = s => {
+  s.style.pointerEvents = "none";
+  s.style.opacity = "0.5";
+};
+
+const fill_tg = document.querySelector('.fill-tg');
+const n = document.getElementById('manager-name');
+const ph = document.getElementById('manager-phone');
+
+tg.BackButton.show();
+tg.setBottomBarColor("bottom_bar_bg_color");
+
+fill_tg.addEventListener('click', async () => {
+  await tg.requestContact(async (shared, callback) => {
+    if (shared && callback) {
+      console.log(callback);
+        const contact = callback.responseUnsafe.contact;
+        n.value = `${contact.first_name} ${contact.last_name}`;
+        ph.value = contact.phone_number;
+        setCheckmark(fill_tg);
+    }
+  });
+});
+
+tg.onEvent('backButtonClicked', (event) => {
+  window.location.href = '/';
+  tg.MainButton.hide();
+});
+
+function formatPhoneNumber(input) {
+
+  if (!input.value.startsWith('+') && input.value.match(/^\d/)) {
+    input.value = '+' + input.value;
+  }
+  if (input.value === '+') {
+    input.value = '';
+  }
+  input.value = input.value.replace(/[^+d (\d)-]/, '');
+  if (input.value.startsWith('+')) {
+    input.value = input.value.substring(0, 4) + input.value.substring(4).replace(/[^0-9]/g, '').slice(0, 13);
+  } else {
+    input.value = input.value.replace(/[^0-9]/g, '').slice(0, 10);
+  }
+}
+
+function validateName(input) {
+  let value = input.value;
+  let pattern = /^[A-Za-zА-ЯЁа-яё]+([- ][A-Za-zА-ЯЁа-яё]+)*$/;
+  if (!value.match(pattern)) {
+    input.setCustomValidity("Имя должно содержать только буквы и может включать пробелы или дефисы.");
+  }
+
+  value = value.replaceAll(/\d+/g, '');
+  input.value = value;
+  input.setCustomValidity("");
+}
          const iframe = document.getElementById("myFrame");
-         // const responsible = getKeyByValue(idMap, tg.initDataUnsafe.user.id);
          const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=Закройщик`;
          iframe.src = url;
       
