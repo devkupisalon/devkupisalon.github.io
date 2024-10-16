@@ -121,7 +121,7 @@
                 <div class="input-label" id="manager-phone-label">Телефон</div>
                 <input class="input" type="tel" id="manager-phone" placeholder="+79999999999" required oninput="formatPhoneNumber(this)">
                 <div class="input-label" id="car-number-label">Госномер</div>
-                <input class="input" type="text" id="car-number" placeholder="АА 777А 777" required>
+                <input class="input" type="text" id="car-number" placeholder="А 777 АA 777" required>
 
                 <p id="fill-text">Вы можете заполнить ФИО и номер телефона из телеграма (проверьте заполнены ли у вас имя и фамилия в тг)</p>
                 <button class="fill-tg" id="autofill-tg">Поделиться контактом</button>
@@ -176,6 +176,11 @@
         const fields = {
             name: '#manager-name',
             phone: '#manager-phone',
+            date: '#date',
+            time: '#time',
+            car: '#car-brands-select',
+            model: '#car-models-select',
+            gosnum: 'car-number-label'
         };
 
         const setCheckmark = s => {
@@ -309,7 +314,6 @@
                     // const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbxagqE63ravHoT9PK-hd1EOe06tWa7AyBbUhbODdC3cuuuJ_oSELy6LFLacB82NWcCr/exec?phone=${phone}&name=${name}&bg_color=${encodeURIComponent(bg_color)}&text_color=${encodeURIComponent(text_color)}&hint_color=${encodeURIComponent(hint_color)}&button_color=${encodeURIComponent(button_color)}&button_text_color=${encodeURIComponent(button_text_color)}&secondary_bg_color=${encodeURIComponent(secondary_bg_color)}&header_bg_color=${encodeURIComponent(header_bg_color)}`;
                     // iframe.src = url;
 
-                    iframe.style.display = "block";
                     tg.MainButton.hideProgress();
                     tg.MainButton.hide();
                 } catch (error) {
