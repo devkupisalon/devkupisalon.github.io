@@ -129,7 +129,7 @@ background-color: var(--tg-theme-bg-color);
                 <button class="fill-tg" id="autofill-tg">Поделиться контактом</button>
 
            <div class="input-label" id="date-label">Дата</div>
-                <select class="inpu-date" id="date" required></select>
+                <select class="input-date" id="date" required></select>
           <div class="input-label" id="time-label">Время</div>
                 <select class="input-time" id="time" required></select>
 
@@ -138,19 +138,19 @@ background-color: var(--tg-theme-bg-color);
               <label for="select-1" class="field_multiselect">Выберите цель посещения</label>
               <input id="checkbox-1" class="multiselect_checkbox" type="checkbox">
               <label for="checkbox-1" class="multiselect_label"></label>
-              <select id="field_select-type" class="field_select" multiple>
+              <select id="field_select-type" class="field_select" multiple required>
                   <!-- заполняем из файла -->
                   </select>
                  </div>
         
                <div class="car-block">
               <label for="car-brands" class="input-label">Марка</label>
-              <select id="car-brands-select" class="select" onchange="getCarModels()">
+              <select id="car-brands-select" class="select" onchange="getCarModels()" required>
                 <!-- опции будут добавлены динамически -->
               </select>
         
               <label for="car-models" class="input-label">Модель</label>
-              <select id="car-models-select" class="select" disabled>
+              <select id="car-models-select" class="select" disabled required>
                 <!-- опции моделей будут добавлены динамически -->
               </select>
                </div>
