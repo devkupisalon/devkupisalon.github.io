@@ -93,7 +93,8 @@
 input[type="text"],
 input[type="tel"],
 .input-time,
-.input-date{
+.input-date,
+.select{
 width: calc(55% - 10px);
 color: var(--tg-theme-text-color);
 padding: 10px 20px;
@@ -145,12 +146,12 @@ background-color: var(--tg-theme-bg-color);
                  </div>
         
                <div class="car-block">
-              <label for="car-brands" class="select">Марка авто</label>
+              <label for="car-brands" class="input-label">Марка</label>
               <select id="car-brands-select" class="select" onchange="getCarModels()">
                 <!-- опции будут добавлены динамически -->
               </select>
         
-              <label for="car-models" class="select">Модель авто</label>
+              <label for="car-models" class="input-label">Модель</label>
               <select id="car-models-select" class="select" disabled>
                 <!-- опции моделей будут добавлены динамически -->
               </select>
