@@ -123,6 +123,16 @@
          const tg = window.Telegram.WebApp;
    tg.expand();
 
+      const {
+  bg_color,
+  text_color,
+  hint_color,
+  button_color,
+  button_text_color,
+  secondary_bg_color,
+         header_bg_color
+} = Telegram.WebApp.themeParams;
+
 const fields = {
   manager_name: '#manager-name',
   phone: '#manager-phone',
@@ -160,7 +170,7 @@ fill_tg.addEventListener('click', async () => {
       iframe.style.display = "block";
 
         const iframe = document.getElementById("myFrame");
-         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?phone=${phone}&name=${name}`;
+         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbxagqE63ravHoT9PK-hd1EOe06tWa7AyBbUhbODdC3cuuuJ_oSELy6LFLacB82NWcCr/exec?phone=${phone}&name=${name}&bg_color=${encodeURIComponent(bg_color)}&text_color=${encodeURIComponent(text_color)}&hint_color=${encodeURIComponent(hint_color)}&button_color=${encodeURIComponent(button_color)}&button_text_color=${encodeURIComponent(button_text_color)}&secondary_bg_color=${encodeURIComponent(secondary_bg_color)}&header_bg_color=${encodeURIComponent(header_bg_color)}`;
          iframe.src = url;
     }
   });
