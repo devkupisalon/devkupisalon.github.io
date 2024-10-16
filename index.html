@@ -946,17 +946,18 @@
 
                 try {
                     const url = `https://script.google.com/macros/s/AKfycbwJaIEcmsz0rNODWI08ivuD-QGIOKjs4xG7j-0L_HAb4AP4HA6Hy19sWCKAplQPsE0/exec?bg_color=${encodeURIComponent(bg_color)}&phone=${encodeURIComponent(phone)}&name=${encodeURIComponent(name)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}&gosnum=${encodeURIComponent(gosnum)}&car=${encodeURIComponent(car)}&model=${encodeURIComponent(model)}&buttonValues=${encodeURIComponent(buttonValues)}`;                    // iframe.src = url;
-
+                    
                     const containerToHide = document.querySelector('.container ');
                     containerToHide.style.display = "none";
                 
                     const iframe = document.getElementById("myFrame");
+                    iframe.src = url;
                     const loader = document.querySelector('.loader');
                     const check = document.querySelector('.success-checkmark');
 
-                    iframe.src = url;
-                    
-                    // iframe.style.display = "block";
+                    setTimeout(() => {
+                      iframe.style.display = "block";
+                    }, 1500);
                     
                     tg.MainButton.hideProgress();
                     tg.MainButton.hide();
