@@ -491,6 +491,10 @@
             preloader.style.display = "none";
             container.style.display = "flex";
             tg.MainButton.show();
+            tg.MainButton.setParams({
+                has_shine_effect: true,
+                text: 'Записаться',
+            });
         }
 
         preload();
@@ -564,12 +568,6 @@
 
             return { data, buttonValues };
         }
-
-        tg.MainButton.show();
-        tg.MainButton.setParams({
-            has_shine_effect: true,
-            text: 'Записаться',
-        });
 
         tg.onEvent('mainButtonClicked', async (event) => {
             tg.MainButton.showProgress(true);
