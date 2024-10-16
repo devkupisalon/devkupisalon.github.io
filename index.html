@@ -98,7 +98,7 @@
    
 </head>
 <body>
-  <iframe id="myFrame" style="display: none; width: 800px; height: 600px;"></iframe>
+  <iframe id="myFrame" style="display: none; max-width: 400px; height: 600px; border: none;""></iframe>
 
      <div class="container">
         <form id="partner-form">
@@ -170,6 +170,7 @@ fill_tg.addEventListener('click', async () => {
          const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbxagqE63ravHoT9PK-hd1EOe06tWa7AyBbUhbODdC3cuuuJ_oSELy6LFLacB82NWcCr/exec?phone=${phone}&name=${name}&bg_color=${encodeURIComponent(bg_color)}&text_color=${encodeURIComponent(text_color)}&hint_color=${encodeURIComponent(hint_color)}&button_color=${encodeURIComponent(button_color)}&button_text_color=${encodeURIComponent(button_text_color)}&secondary_bg_color=${encodeURIComponent(secondary_bg_color)}&header_bg_color=${encodeURIComponent(header_bg_color)}`;
          iframe.src = url;
 
+       console.log(url);
         // Показать iframe
       iframe.style.display = "block";
     }
