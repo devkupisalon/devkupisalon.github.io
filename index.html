@@ -70,8 +70,7 @@
             border: 2px solid #007bff;
         }
 
-        .input-form,
-        .car-block{
+        .input-form{
             margin-top: 10px;
             display: flex;
             flex-wrap: wrap;
@@ -111,7 +110,6 @@
 </head>
 
 <body>
-    <!--   <iframe id="myFrame" style="display: none; width: 380px; height: 700px; border: none;"></iframe> -->
 
     <div class="container">
         <form id="partner-form">
@@ -131,8 +129,7 @@
                 <select class="input-date" id="date" required></select>
                 <div class="input-label" id="time-label">Время</div>
                 <select class="input-time" id="time" required></select>
-
-<!--             <div class="car-block"> -->
+                
                 <label for="car-brands" class="input-label">Марка</label>
                 <select id="car-brands-select" class="select" onchange="getCarModels()" required>
                     <!-- опции будут добавлены динамически -->
@@ -142,7 +139,6 @@
                 <select id="car-models-select" class="select" disabled required>
                     <!-- опции моделей будут добавлены динамически -->
                 </select>
-<!--             </div> -->
                 
             </div>
 
@@ -309,11 +305,6 @@
             if (name && phone) {
 
                 try {
-
-                    const containerToHide = document.querySelector('.container');
-                    containerToHide.style.display = "none";
-
-                    // const iframe = document.getElementById("myFrame");
                     // const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbxagqE63ravHoT9PK-hd1EOe06tWa7AyBbUhbODdC3cuuuJ_oSELy6LFLacB82NWcCr/exec?phone=${phone}&name=${name}&bg_color=${encodeURIComponent(bg_color)}&text_color=${encodeURIComponent(text_color)}&hint_color=${encodeURIComponent(hint_color)}&button_color=${encodeURIComponent(button_color)}&button_text_color=${encodeURIComponent(button_text_color)}&secondary_bg_color=${encodeURIComponent(secondary_bg_color)}&header_bg_color=${encodeURIComponent(header_bg_color)}`;
                     // iframe.src = url;
 
@@ -343,9 +334,9 @@
             var day = currentDate.getDate();
             var dateOptions = "";
             for (var i = 0; i < 365; i++) {
-                var date = new Date(year, month - 1, day + i);
-                var dateString = date.toISOString().slice(0, 10).replaceAll("-", ".");
-                dateOptions += `<option value="${dateString}">${dateString}</option>`;
+              var date = new Date(year, month - 1, day + i);
+              var dateString = ("0" + date.getDate()).slice(-2) + "." + ("0" + (date.getMonth() + 1)).slice(-2) + "." + date.getFullYear();
+              dateOptions += `<option value="${dateString}">${dateString}</option>`;
             }
             $("#date").html(dateOptions);
 
