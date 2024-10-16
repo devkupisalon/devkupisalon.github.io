@@ -89,13 +89,13 @@
 
 input[type="text"],
 input[type="tel"]
-input[type="time"]
-input[type="date"]    {
-    width: calc(55% - 10px);
-    color: var(--tg-theme-text-color);
-    padding: 10px 20px;
-    border-radius: 20px;
-    margin-bottom: 20px;
+.input-time,
+.input-date{
+width: calc(55% - 10px);
+color: var(--tg-theme-text-color);
+padding: 10px 20px;
+border-radius: 20px;
+margin-bottom: 20px;
     background-color: var(--tg-theme-bg-color);
 }
     
@@ -127,9 +127,9 @@ input[type="date"]    {
                 <button class="fill-tg" id="autofill-tg">Поделиться контактом</button>
 
            <div class="input-label" id="date-label">Дата</div>
-                <select class="input" type="date" id="date" required></select>
+                <select class="inpu-datet" id="date" required></select>
           <div class="input-label" id="time-label">Время</div>
-                <select class="input" type="time" id="time" required></select>
+                <select class="input-time" id="time" required></select>
 
            <div class="multiselect_block">
       
