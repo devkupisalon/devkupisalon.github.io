@@ -199,11 +199,12 @@ fill_tg.addEventListener('click', async () => {
 });
 
 function getCarBrandsAndModels() {
+  let car_values;
   try {
           const response = await fetch('https://script.google.com/macros/s/AKfycbxm7MN6eie82BvGYo_fTD_62WxS7eoVLHFTQ4DQ9qo1NEpIYxJCK0fBntN1VnbAR028/exec', { 
             method: 'POST'
           });
-          const data = await response.json();
+          cat_values = await response.json();
           // Обработка полученных данных
           console.log(data);
         } catch (err) {
@@ -214,7 +215,7 @@ function getCarBrandsAndModels() {
     const carBrandsSelect = document.getElementById("car-brands-select");
     const carModelsSelect = document.getElementById("car-models-select");
 
-    for (let row of data) {
+    for (let row of car_values) {
       const brand = row[0]; // Марка авто
       const option = document.createElement("option");
       option.text = brand;
@@ -227,7 +228,7 @@ function getCarBrandsAndModels() {
       carModelsSelect.innerHTML = "";
       carModelsSelect.disabled = true;
 
-      for (let [brand, ...models] of data) {
+      for (let [brand, ...models] of car_values) {
         if (brand === selectedBrand) {
           for (let model of models) {
             const option = document.createElement("option");
@@ -243,7 +244,7 @@ function getCarBrandsAndModels() {
     }
 
     carBrandsSelect.onchange = getCarModels;
-  }).getBrands(); // Замените на вашу функцию обращения к Гугл таблице
+  }
 }
 
 getCarBrandsAndModels();
