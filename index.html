@@ -117,11 +117,42 @@ input[type="tel"] {
                 <div class="input-label" id="manager-phone-label">Телефон</div>
                 <input class="input" type="tel" id="manager-phone" placeholder="+79999999999" required
                     oninput="formatPhoneNumber(this)">
+              <div class="input-form">
+                <div class="input-label" id="manager-name-label">Номер Авто</div>
+                <input class="input" type="text" id="manager-name" placeholder="АА 777А 777" required>
+              </div>
+        
+              <div class="input-form">
+                <div class="input-label" id="datetime-label">Дата и время</div>
+                <select class="input" id="date" required></select>
+                <select class="input" id="time" required></select>
+              </div>
                     <p id="fill-text">Или Вы можете заполнить ФИО и номер телефона из телеграма (проверьте заполнены ли у вас имя и фамилия в тг)</p>
                 <button class="fill-tg" id="autofill-tg">Поделиться контактом</button>
             </div>
         </form>
-    </div>
+
+       <div class="multiselect_block">
+      
+      <label for="select-1" class="field_multiselect">Выберите цель посещения</label>
+      <input id="checkbox-1" class="multiselect_checkbox" type="checkbox">
+      <label for="checkbox-1" class="multiselect_label"></label>
+      <select id="field_select-type" class="field_select" multiple>
+          <!-- заполняем из файла -->
+          </select>
+         </div>
+
+       <div class="time-car-block">
+      <label for="car-brands" class="select">Марка авто</label>
+      <select id="car-brands-select" class="select" onchange="getCarModels()">
+        <!-- опции будут добавлены динамически -->
+      </select>
+
+      <label for="car-models" class="select">Модель авто</label>
+      <select id="car-models-select" class="select" disabled>
+        <!-- опции моделей будут добавлены динамически -->
+      </select>
+       </div>
 
    <script>
    const tg = window.Telegram.WebApp;
@@ -167,6 +198,22 @@ fill_tg.addEventListener('click', async () => {
     }
   });
 });
+
+     async function fetchData() {
+        try {
+          const response = await fetch('https://script.google.com/macros/s/AKfycbxm7MN6eie82BvGYo_fTD_62WxS7eoVLHFTQ4DQ9qo1NEpIYxJCK0fBntN1VnbAR028/exec', { 
+            method: 'POST'
+          });
+          const data = await response.json();
+          // Обработка полученных данных
+          console.log(data);
+        } catch (err) {
+          // Обработка ошибок
+          console.error(err);
+        }
+      }
+
+const car_values = await fetchData();
 
 function formatPhoneNumber(input) {
 
