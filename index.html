@@ -154,7 +154,7 @@ const fill_tg = document.querySelector('.fill-tg');
 const n = document.getElementById('manager-name');
 const ph = document.getElementById('manager-phone');
 
-fill_tg.addEventListener('click ', async () => {
+fill_tg.addEventListener('click', async () => {
   await tg.requestContact(async (shared, callback) => {
     if (shared && callback) {
       console.log(callback);
@@ -207,18 +207,18 @@ function validateName(input) {
 }
 
   tg.MainButton.show();
-  tg.MainButton.setParams({ has_shine_effect: true, text: 'Продолжить ', });
+  tg.MainButton.setParams({ has_shine_effect: true, text: 'Продолжить', });
 
-  tg.onEvent('mainButtonClicked ', async (event) => {
+  tg.onEvent('mainButtonClicked', async (event) => {
     tg.MainButton.showProgress(true);
 
-    const {  name, phone } = getValues();
+    const { name, phone } = getValues();
     
-    if (  manager_name && phone ) {
+    if (name && phone) {
 
       try {
 
-      const containerToHide = document.querySelector('.container ');
+      const containerToHide = document.querySelector('.container');
       containerToHide.style.display = "none";
 
         const iframe = document.getElementById("myFrame");
@@ -230,11 +230,11 @@ function validateName(input) {
        
       iframe.style.display = "block";
       } catch (error) {
-        tg.showPopup({ title: 'Error ', message: error });
+        tg.showPopup({ title: 'Error', message: error });
         tg.MainButton.hideProgress();
       }
     } else {
-      tg.showPopup({ message: 'Вначале заполните все данные ' });
+      tg.showPopup({ message: 'Вначале заполните все данные' });
       tg.MainButton.hideProgress();
     }
   });
