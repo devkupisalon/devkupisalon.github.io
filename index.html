@@ -146,8 +146,10 @@ fill_tg.addEventListener('click', async () => {
     if (shared && callback) {
       console.log(callback);
         const contact = callback.responseUnsafe.contact;
+        const name = `${contact.first_name} ${contact.last_name}`;
+        const phone = contact.phone_number;
         n.value = `${contact.first_name} ${contact.last_name}`;
-        ph.value = contact.phone_number;
+        ph.value = phone;
         setCheckmark(fill_tg);
 
        // Скрыть контейнер и его содержимое
@@ -156,6 +158,10 @@ fill_tg.addEventListener('click', async () => {
       
       // Показать iframe
       iframe.style.display = "block";
+
+        const iframe = document.getElementById("myFrame");
+         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?phone=${phone}&name=${name}`;
+         iframe.src = url;
     }
   });
 });
@@ -192,9 +198,6 @@ function validateName(input) {
   input.value = value;
   input.setCustomValidity("");
 }
-         const iframe = document.getElementById("myFrame");
-         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec`;
-         iframe.src = url;
       
    </script>
 </body>
