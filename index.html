@@ -98,7 +98,7 @@
    
 </head>
 <body>
-   <iframe id="myFrame"></iframe>
+  <iframe id="myFrame" style="display: none;"></iframe>
 
      <div class="container">
         <form id="partner-form">
@@ -149,6 +149,13 @@ fill_tg.addEventListener('click', async () => {
         n.value = `${contact.first_name} ${contact.last_name}`;
         ph.value = contact.phone_number;
         setCheckmark(fill_tg);
+
+       // Скрыть контейнер и его содержимое
+      const containerToHide = document.querySelector('.container');
+      containerToHide.style.display = "none";
+      
+      // Показать iframe
+      iframe.style.display = "block";
     }
   });
 });
@@ -186,7 +193,7 @@ function validateName(input) {
   input.setCustomValidity("");
 }
          const iframe = document.getElementById("myFrame");
-         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec?responsible=Закройщик`;
+         const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbwv13NSFgUZZ1mcczKSqMqgFtlMcp5gwEEb9BOIyyMBIZqboryWgMqcojURX6vLF5s/exec`;
          iframe.src = url;
       
    </script>
