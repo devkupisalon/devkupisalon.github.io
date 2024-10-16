@@ -334,7 +334,7 @@ function validateName(input) {
     var dateOptions = "";
     for (var i = 0; i < 365; i++) {
       var date = new Date(year, month - 1, day + i);
-      var dateString = date.toISOString().slice(0, 10);
+      var dateString = date.toISOString().slice(0, 10).replaceAll("-", ".");
       dateOptions += `<option value="${dateString}">${dateString}</option>`;
     }
     $("#date").html(dateOptions);
