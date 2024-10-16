@@ -150,9 +150,9 @@ const setCheckmark = s => {
   s.style.opacity = "0.5";
 };
 
-const fill_tg = document.querySelector('.fill-tg ');
-const n = document.getElementById('manager-name ');
-const ph = document.getElementById('manager-phone ');
+const fill_tg = document.querySelector('.fill-tg');
+const n = document.getElementById('manager-name');
+const ph = document.getElementById('manager-phone');
 
 fill_tg.addEventListener('click ', async () => {
   await tg.requestContact(async (shared, callback) => {
