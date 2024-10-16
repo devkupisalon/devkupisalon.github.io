@@ -2,362 +2,371 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>Test Telegram WebApps</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Test Telegram WebApps</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      color: var(--tg-theme-text-color);
-      background: var(--tg-theme-bg-color);
-      padding-top: 40px;
-    }
-    
-    .container {
-      width: fit-content;
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      height: fit-content;
-      margin: 0 auto;
-      padding: 10px 20px;
-      border-radius: 20px;
-      background-color: var(--tg-theme-header-bg-color);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-    }
-    
-    p {
-      margin-bottom: 20px;
-      color: var(--tg-theme-hint-color);
-    }
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color);
+            padding-top: 40px;
+        }
 
-    h3 {
-      margin-bottom: 30px;
-      color: var(--tg-theme-section-header-text-color);
-    }
-    
-    .button,
-    .fill-tg {
-      height: 40px;
-      font-weight: bold;
-      font-size: 16px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 10px 20px;
-      color: var(--tg-theme-button-text-color);
-      background: var(--tg-theme-button-color);
-      border-radius: 20px;
-      border: none;
-      margin-bottom: 20px;
-    }
-    
-    @media only screen and (min-width: 768px) {
-      .container {
-        max-width: 400px;
-      }
-    }
-    
-    input:invalid {
-      border-color: red;
-    }
-    
-    input:valid {
-      border: 2px solid #007bff;
-    }
-    
-    .input-form {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-    }
-    
-   .input-label {
-    text-align: center;
-    width: calc(23% - 10px);
-    font-weight: bold;
-    margin-right: 10px;
-    margin-bottom: 20px;
-    background-color: var(--tg-theme-button-color);
-    color: var(--tg-theme-button-text-color);
-    padding: 10px 20px;
-    border-radius: 20px;
-}
+        .container {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            height: fit-content;
+            margin: 0 auto;
+            padding: 10px 20px;
+            border-radius: 20px;
+            background-color: var(--tg-theme-header-bg-color);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
 
-input[type="text"],
-input[type="tel"],
-.input-time,
-.input-date,
-.select{
-width: calc(55% - 10px);
-color: var(--tg-theme-text-color);
-padding: 10px 20px;
-border-radius: 20px;
-margin-bottom: 20px;
-background-color: var(--tg-theme-bg-color);
-}
-    
-    button:hover {
-      transform: scale(1.05);
-    }
-  </style>
+        p {
+            margin-bottom: 20px;
+            color: var(--tg-theme-hint-color);
+        }
+
+        h3 {
+            margin-bottom: 30px;
+            color: var(--tg-theme-section-header-text-color);
+        }
+
+        .button,
+        .fill-tg {
+            height: 40px;
+            font-weight: bold;
+            font-size: 16px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 10px 20px;
+            color: var(--tg-theme-button-text-color);
+            background: var(--tg-theme-button-color);
+            border-radius: 20px;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        @media only screen and (min-width: 768px) {
+            .container {
+                max-width: 400px;
+            }
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+        input:valid {
+            border: 2px solid #007bff;
+        }
+
+        .input-form {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .input-label {
+            text-align: center;
+            width: calc(23% - 10px);
+            font-weight: bold;
+            margin-right: 10px;
+            margin-bottom: 20px;
+            background-color: var(--tg-theme-button-color);
+            color: var(--tg-theme-button-text-color);
+            padding: 10px 20px;
+            border-radius: 20px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        .input-time,
+        .input-date,
+        .select {
+            width: calc(55% - 10px);
+            color: var(--tg-theme-text-color);
+            padding: 10px 20px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            background-color: var(--tg-theme-bg-color);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
 
 </head>
 
 <body>
-<!--   <iframe id="myFrame" style="display: none; width: 380px; height: 700px; border: none;"></iframe> -->
+    <!--   <iframe id="myFrame" style="display: none; width: 380px; height: 700px; border: none;"></iframe> -->
 
-     <div class="container">
+    <div class="container">
         <form id="partner-form">
-             <h3 id="main-heading">Заполните пожалуйста данные для формирования заявки на пропуск</h3>
+            <h3 id="main-heading">Заполните пожалуйста данные для формирования заявки на пропуск</h3>
             <div class="input-form">
                 <div class="input-label" id="manager-name-label">ФИО</div>
-                <input class="input" type="text" id="manager-name" placeholder="Name" required
-                    oninput="validateName(event.target)">
+                <input class="input" type="text" id="manager-name" placeholder="Name" required oninput="validateName(event.target)">
                 <div class="input-label" id="manager-phone-label">Телефон</div>
-                <input class="input" type="tel" id="manager-phone" placeholder="+79999999999" required
-                    oninput="formatPhoneNumber(this)">
+                <input class="input" type="tel" id="manager-phone" placeholder="+79999999999" required oninput="formatPhoneNumber(this)">
                 <div class="input-label" id="car-number-label">Госномер</div>
                 <input class="input" type="text" id="car-number" placeholder="АА 777А 777" required>
-              </div>
-        
-                    <p id="fill-text">Вы можете заполнить ФИО и номер телефона из телеграма (проверьте заполнены ли у вас имя и фамилия в тг)</p>
-                <button class="fill-tg" id="autofill-tg">Поделиться контактом</button>
-
-           <div class="input-label" id="date-label">Дата</div>
-                <select class="input-date" id="date" required></select>
-          <div class="input-label" id="time-label">Время</div>
-                <select class="input-time" id="time" required></select>
-
-           <div class="multiselect_block">
-      
-              <label for="select-1" class="field_multiselect">Выберите цель посещения</label>
-              <input id="checkbox-1" class="multiselect_checkbox" type="checkbox">
-              <label for="checkbox-1" class="multiselect_label"></label>
-              <select id="field_select-type" class="field_select" multiple required>
-                  <!-- заполняем из файла -->
-                  </select>
-                 </div>
-        
-               <div class="car-block">
-              <label for="car-brands" class="input-label">Марка</label>
-              <select id="car-brands-select" class="select" onchange="getCarModels()" required>
-                <!-- опции будут добавлены динамически -->
-              </select>
-        
-              <label for="car-models" class="input-label">Модель</label>
-              <select id="car-models-select" class="select" disabled required>
-                <!-- опции моделей будут добавлены динамически -->
-              </select>
-               </div>
             </div>
 
-        </form>
+            <p id="fill-text">Вы можете заполнить ФИО и номер телефона из телеграма (проверьте заполнены ли у вас имя и фамилия в тг)</p>
+            <button class="fill-tg" id="autofill-tg">Поделиться контактом</button>
 
-   <script>
-   const tg = window.Telegram.WebApp;
-   tg.ready();
-   tg.expand();
-   tg.enableClosingConfirmation();
-   tg.setBottomBarColor("bottom_bar_bg_color");
+            <div class="input-label" id="date-label">Дата</div>
+            <select class="input-date" id="date" required></select>
+            <div class="input-label" id="time-label">Время</div>
+            <select class="input-time" id="time" required></select>
 
-      const {
-        bg_color,
-        text_color,
-        hint_color,
-        button_color,
-        button_text_color,
-        secondary_bg_color,
-        header_bg_color
+            <div class="multiselect_block">
+
+                <label for="select-1" class="field_multiselect">Выберите цель посещения</label>
+                <input id="checkbox-1" class="multiselect_checkbox" type="checkbox">
+                <label for="checkbox-1" class="multiselect_label"></label>
+                <select id="field_select-type" class="field_select" multiple required>
+                    <!-- заполняем из файла -->
+                </select>
+            </div>
+
+            <div class="car-block">
+                <label for="car-brands" class="input-label">Марка</label>
+                <select id="car-brands-select" class="select" onchange="getCarModels()" required>
+                    <!-- опции будут добавлены динамически -->
+                </select>
+
+                <label for="car-models" class="input-label">Модель</label>
+                <select id="car-models-select" class="select" disabled required>
+                    <!-- опции моделей будут добавлены динамически -->
+                </select>
+            </div>
+    </div>
+
+    </form>
+
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        tg.enableClosingConfirmation();
+        tg.setBottomBarColor("bottom_bar_bg_color");
+
+        const {
+            bg_color,
+            text_color,
+            hint_color,
+            button_color,
+            button_text_color,
+            secondary_bg_color,
+            header_bg_color
         } = Telegram.WebApp.themeParams;
 
-const fields = {
-  name: '#manager-name',
-  phone: '#manager-phone',
-};
+        const fields = {
+            name: '#manager-name',
+            phone: '#manager-phone',
+        };
 
-const setCheckmark = s => {
-  s.style.pointerEvents = "none";
-  s.style.opacity = "0.5";
-};
+        const setCheckmark = s => {
+            s.style.pointerEvents = "none";
+            s.style.opacity = "0.5";
+        };
 
-const fill_tg = document.querySelector('.fill-tg');
-const n = document.getElementById('manager-name');
-const ph = document.getElementById('manager-phone');
+        const fill_tg = document.querySelector('.fill-tg');
+        const n = document.getElementById('manager-name');
+        const ph = document.getElementById('manager-phone');
 
-fill_tg.addEventListener('click', async () => {
-  await tg.requestContact(async (shared, callback) => {
-    if (shared && callback) {
-      console.log(callback);
-        const contact = callback.responseUnsafe.contact;
-        const name = `${contact.first_name} ${contact.last_name}`;
-        const phone = contact.phone_number;
-        n.value = `${contact.first_name} ${contact.last_name}`;
-        ph.value = phone;
-        setCheckmark(fill_tg);
-    }
-  });
-});
+        fill_tg.addEventListener('click', async () => {
+            await tg.requestContact(async (shared, callback) => {
+                if (shared && callback) {
+                    console.log(callback);
+                    const contact = callback.responseUnsafe.contact;
+                    const name = `${contact.first_name} ${contact.last_name}`;
+                    const phone = contact.phone_number;
+                    n.value = `${contact.first_name} ${contact.last_name}`;
+                    ph.value = phone;
+                    setCheckmark(fill_tg);
+                }
+            });
+        });
 
-async function getCarBrandsAndModels() {
-  let car_values;
-  try {
-          const response = await fetch('https://script.google.com/macros/s/AKfycbxm7MN6eie82BvGYo_fTD_62WxS7eoVLHFTQ4DQ9qo1NEpIYxJCK0fBntN1VnbAR028/exec', { 
-            method: 'POST'
-          });
-          const values = await response.json();
-          car_values = Object.values(values);
-          // Обработка полученных данных
-          console.log(car_values);
-        } catch (err) {
-          // Обработка ошибок
-          console.error(err);
+        async function getCarBrandsAndModels() {
+            let car_values;
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbxm7MN6eie82BvGYo_fTD_62WxS7eoVLHFTQ4DQ9qo1NEpIYxJCK0fBntN1VnbAR028/exec', {
+                    method: 'POST'
+                });
+                const values = await response.json();
+                car_values = Object.values(values);
+                // Обработка полученных данных
+                console.log(car_values);
+            } catch (err) {
+                // Обработка ошибок
+                console.error(err);
+            }
+
+            const carBrandsSelect = document.getElementById("car-brands-select");
+            const carModelsSelect = document.getElementById("car-models-select");
+
+            for (let row of car_values) {
+                const brand = row[0]; // Марка авто
+                const option = document.createElement("option");
+                option.text = brand;
+                carBrandsSelect.add(option);
+            }
+
+            function getCarModels() {
+                const selectedBrand = carBrandsSelect.value;
+
+                carModelsSelect.innerHTML = "";
+                carModelsSelect.disabled = true;
+
+                for (let [brand, ...models] of car_values) {
+                    if (brand === selectedBrand) {
+                        for (let model of models) {
+                            const option = document.createElement("option");
+                            option.text = model;
+                            carModelsSelect.add(option);
+                        }
+                    }
+                }
+
+                if (carModelsSelect.options.length > 0) {
+                    carModelsSelect.disabled = false;
+                }
+            }
+
+            carBrandsSelect.onchange = getCarModels;
         }
-  
-    const carBrandsSelect = document.getElementById("car-brands-select");
-    const carModelsSelect = document.getElementById("car-models-select");
 
-    for (let row of car_values) {
-      const brand = row[0]; // Марка авто
-      const option = document.createElement("option");
-      option.text = brand;
-      carBrandsSelect.add(option);
-    }
+        getCarBrandsAndModels();
 
-    function getCarModels() {
-      const selectedBrand = carBrandsSelect.value;
+        function formatPhoneNumber(input) {
 
-      carModelsSelect.innerHTML = "";
-      carModelsSelect.disabled = true;
-
-      for (let [brand, ...models] of car_values) {
-        if (brand === selectedBrand) {
-          for (let model of models) {
-            const option = document.createElement("option");
-            option.text = model;
-            carModelsSelect.add(option);
-          }
+            if (!input.value.startsWith('+ ') && input.value.match(/^\d/)) {
+                input.value = '+ ' + input.value;
+            }
+            if (input.value === '+ ') {
+                input.value = ' ';
+            }
+            input.value = input.value.replace(/[^+d (\d)-]/, ' ');
+            if (input.value.startsWith('+ ')) {
+                input.value = input.value.substring(0, 4) + input.value.substring(4).replace(/[^0-9]/g, ' ').slice(0, 13);
+            } else {
+                input.value = input.value.replace(/[^0-9]/g, ' ').slice(0, 10);
+            }
         }
-      }
 
-      if (carModelsSelect.options.length > 0) {
-        carModelsSelect.disabled = false;
-      }
-    }
+        function validateName(input) {
+            let value = input.value;
+            let pattern = /^[A-Za-zА-ЯЁа-яё]+([- ][A-Za-zА-ЯЁа-яё]+)*$/;
+            if (!value.match(pattern)) {
+                input.setCustomValidity("Имя должно содержать только буквы и может включать пробелы или дефисы.");
+            }
 
-    carBrandsSelect.onchange = getCarModels;
-  }
+            value = value.replaceAll(/\d+/g, ' ');
+            input.value = value;
+            input.setCustomValidity("");
+        }
 
-getCarBrandsAndModels();
+        function getValues() {
 
-function formatPhoneNumber(input) {
+            const data = Object.fromEntries(
+                Object.entries(fields).map(([key, selector]) => [key, document.querySelector(selector).value])
+            );
 
-  if (!input.value.startsWith('+ ') && input.value.match(/^\d/)) {
-    input.value = '+ ' + input.value;
-  }
-  if (input.value === '+ ') {
-    input.value = ' ';
-  }
-  input.value = input.value.replace(/[^+d (\d)-]/, ' ');
-  if (input.value.startsWith('+ ')) {
-    input.value = input.value.substring(0, 4) + input.value.substring(4).replace(/[^0-9]/g, ' ').slice(0, 13);
-  } else {
-    input.value = input.value.replace(/[^0-9]/g, ' ').slice(0, 10);
-  }
-}
+            return data;
+        }
 
-function validateName(input) {
-  let value = input.value;
-  let pattern = /^[A-Za-zА-ЯЁа-яё]+([- ][A-Za-zА-ЯЁа-яё]+)*$/;
-  if (!value.match(pattern)) {
-    input.setCustomValidity("Имя должно содержать только буквы и может включать пробелы или дефисы.");
-  }
+        tg.MainButton.show();
+        tg.MainButton.setParams({
+            has_shine_effect: true,
+            text: 'Продолжить',
+        });
 
-  value = value.replaceAll(/\d+/g, ' ');
-  input.value = value;
-  input.setCustomValidity("");
-}
+        tg.onEvent('mainButtonClicked', async (event) => {
+            tg.MainButton.showProgress(true);
 
-      function getValues() {
+            const {
+                name,
+                phone
+            } = getValues();
 
-  const data = Object.fromEntries(
-    Object.entries(fields).map(([key, selector]) => [key, document.querySelector(selector).value])
-  );
- 
-  return data;
-}
+            if (name && phone) {
 
-  tg.MainButton.show();
-  tg.MainButton.setParams({ has_shine_effect: true, text: 'Продолжить', });
+                try {
 
-  tg.onEvent('mainButtonClicked', async (event) => {
-    tg.MainButton.showProgress(true);
+                    const containerToHide = document.querySelector('.container');
+                    containerToHide.style.display = "none";
 
-    const { name, phone } = getValues();
-    
-    if (name && phone) {
+                    // const iframe = document.getElementById("myFrame");
+                    // const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbxagqE63ravHoT9PK-hd1EOe06tWa7AyBbUhbODdC3cuuuJ_oSELy6LFLacB82NWcCr/exec?phone=${phone}&name=${name}&bg_color=${encodeURIComponent(bg_color)}&text_color=${encodeURIComponent(text_color)}&hint_color=${encodeURIComponent(hint_color)}&button_color=${encodeURIComponent(button_color)}&button_text_color=${encodeURIComponent(button_text_color)}&secondary_bg_color=${encodeURIComponent(secondary_bg_color)}&header_bg_color=${encodeURIComponent(header_bg_color)}`;
+                    // iframe.src = url;
 
-      try {
+                    iframe.style.display = "block";
+                    tg.MainButton.hideProgress();
+                    tg.MainButton.hide();
+                } catch (error) {
+                    tg.showPopup({
+                        title: 'Error',
+                        message: error
+                    });
+                    tg.MainButton.hideProgress();
+                }
+            } else {
+                tg.showPopup({
+                    message: 'Вначале заполните все данные'
+                });
+                tg.MainButton.hideProgress();
+            }
+        });
 
-      const containerToHide = document.querySelector('.container');
-      containerToHide.style.display = "none";
+        $(document).ready(function() {
+            // Генерируем параметры для выбора даты
+            var currentDate = new Date();
+            var year = currentDate.getFullYear();
+            var month = currentDate.getMonth() + 1;
+            var day = currentDate.getDate();
+            var dateOptions = "";
+            for (var i = 0; i < 365; i++) {
+                var date = new Date(year, month - 1, day + i);
+                var dateString = date.toISOString().slice(0, 10).replaceAll("-", ".");
+                dateOptions += `<option value="${dateString}">${dateString}</option>`;
+            }
+            $("#date").html(dateOptions);
 
-        // const iframe = document.getElementById("myFrame");
-        // const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbxagqE63ravHoT9PK-hd1EOe06tWa7AyBbUhbODdC3cuuuJ_oSELy6LFLacB82NWcCr/exec?phone=${phone}&name=${name}&bg_color=${encodeURIComponent(bg_color)}&text_color=${encodeURIComponent(text_color)}&hint_color=${encodeURIComponent(hint_color)}&button_color=${encodeURIComponent(button_color)}&button_text_color=${encodeURIComponent(button_text_color)}&secondary_bg_color=${encodeURIComponent(secondary_bg_color)}&header_bg_color=${encodeURIComponent(header_bg_color)}`;
-         // iframe.src = url;
-       
-        iframe.style.display = "block";
-        tg.MainButton.hideProgress();
-        tg.MainButton.hide();
-      } catch (error) {
-        tg.showPopup({ title: 'Error', message: error });
-        tg.MainButton.hideProgress();
-      }
-    } else {
-      tg.showPopup({ message: 'Вначале заполните все данные' });
-      tg.MainButton.hideProgress();
-    }
-  });
+            // Генерируем параметры для выбора времени
+            var timeOptions = "";
+            for (var h = 9; h <= 20; h++) {
+                var hourString = h.toString().padStart(2, "0");
+                for (var m = 0; m < 60; m += 15) {
+                    var minuteString = m.toString().padStart(2, "0");
+                    var timeString = `${hourString}:${minuteString}`;
+                    timeOptions += `<option value="${timeString}">${timeString}</option>`;
+                }
+            }
+            $("#time").html(timeOptions);
 
-     $(document).ready(function() {
-    // Генерируем параметры для выбора даты
-    var currentDate = new Date();
-    var year = currentDate.getFullYear();
-    var month = currentDate.getMonth() + 1;
-    var day = currentDate.getDate();
-    var dateOptions = "";
-    for (var i = 0; i < 365; i++) {
-      var date = new Date(year, month - 1, day + i);
-      var dateString = date.toISOString().slice(0, 10).replaceAll("-", ".");
-      dateOptions += `<option value="${dateString}">${dateString}</option>`;
-    }
-    $("#date").html(dateOptions);
-
-    // Генерируем параметры для выбора времени
-    var timeOptions = "";
-    for (var h = 9; h <= 20; h++) {
-      var hourString = h.toString().padStart(2, "0");
-      for (var m = 0; m < 60; m += 15) {
-        var minuteString = m.toString().padStart(2, "0");
-        var timeString = `${hourString}:${minuteString}`;
-        timeOptions += `<option value="${timeString}">${timeString}</option>`;
-      }
-    }
-    $("#time").html(timeOptions);
-
-    // Обработчик изменения выбранной даты или времени
-    $("#date, #time").change(function() {
-      var selectedDate = $("#date").val();
-      var selectedTime = $("#time").val();
-      var dateTimeString = selectedDate + "T" + selectedTime;
-      $("#datetime").val(dateTimeString);
-    });
-  });
-      
-   </script>
+            // Обработчик изменения выбранной даты или времени
+            $("#date, #time").change(function() {
+                var selectedDate = $("#date").val();
+                var selectedTime = $("#time").val();
+                var dateTimeString = selectedDate + "T" + selectedTime;
+                $("#datetime").val(dateTimeString);
+            });
+        });
+    </script>
 </body>
+
 </html>
