@@ -98,7 +98,7 @@
    
 </head>
 <body>
-  <iframe id="myFrame" style="display: none; width: 400px; height: 600px; border: none;""></iframe>
+  <iframe id="myFrame" style="display: none; width: 380px; height: 700px; border: none;""></iframe>
 
      <div class="container">
         <form id="partner-form">
@@ -171,9 +171,9 @@ fill_tg.addEventListener('click', async () => {
          iframe.src = url;
 
        console.log(url);
-       window.location.href = url;
+       // window.location.href = url;
         // Показать iframe
-      // iframe.style.display = "block";
+      iframe.style.display = "block";
     }
   });
 });
