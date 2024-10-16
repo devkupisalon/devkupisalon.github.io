@@ -165,13 +165,13 @@ fill_tg.addEventListener('click', async () => {
        // Скрыть контейнер и его содержимое
       const containerToHide = document.querySelector('.container');
       containerToHide.style.display = "none";
-      
-      // Показать iframe
-      iframe.style.display = "block";
 
         const iframe = document.getElementById("myFrame");
          const url = `https://script.google.com/a/macros/kupisalon.ru/s/AKfycbxagqE63ravHoT9PK-hd1EOe06tWa7AyBbUhbODdC3cuuuJ_oSELy6LFLacB82NWcCr/exec?phone=${phone}&name=${name}&bg_color=${encodeURIComponent(bg_color)}&text_color=${encodeURIComponent(text_color)}&hint_color=${encodeURIComponent(hint_color)}&button_color=${encodeURIComponent(button_color)}&button_text_color=${encodeURIComponent(button_text_color)}&secondary_bg_color=${encodeURIComponent(secondary_bg_color)}&header_bg_color=${encodeURIComponent(header_bg_color)}`;
          iframe.src = url;
+
+        // Показать iframe
+      iframe.style.display = "block";
     }
   });
 });
