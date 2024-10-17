@@ -22,7 +22,7 @@
             display: flex;
             flex-direction: column;
             text-align: center;
-            height: fit-content;
+            height:800px;
             margin: 0 auto;
             padding: 10px 20px;
             border-radius: 20px;
@@ -586,7 +586,7 @@
     </div>
 
 <!--     <iframe id="myFrame" style="position: fixed; top: 0; right: 0; width: 1px; height: 1px; background: var(--tg-theme-bg-color); display: none;"></iframe> -->
-    <iframe id="myFrame" style="display: none; width: 380px; height: 700px; border: none; background: var(--tg-theme-bg-color);"></iframe>
+    <iframe id="myFrame" style="display: none; width: 380px; height: 800px; border: none; background: var(--tg-theme-bg-color);"></iframe>
 
 
     <div class="container">
@@ -600,8 +600,7 @@
                 <div class="input-label" id="car-number-label">Госномер</div>
                 <input class="input" type="text" id="car-number" placeholder="А 777 АA 777" required>
 
-<!--                 <p id="fill-text">Вы можете заполнить ФИО и номер телефона из телеграма (проверьте заполнены ли у вас имя и фамилия в тг)</p>
-                <button class="fill-tg" id="autofill-tg">Поделиться контактом</button> -->
+<!--                 <p id="fill-text">Вы можете заполнить ФИО и номер телефона из телеграма (проверьте заполнены ли у вас имя и фамилия в тг)</p> -->
 
                 <div class="input-label" id="date-label">Дата</div>
                 <select class="input-date" id="date" required></select>
@@ -629,6 +628,8 @@
                     <!-- заполняем из файла -->
                 </select>
             </div>
+
+            <button class="fill-tg" id="autofill-tg">Записаться</button>
 
         </form>
     </div>
@@ -754,17 +755,17 @@
         const ph = document.getElementById('manager-phone');
 
         // fill_tg.addEventListener('click', async () => {
-        //     await tg.requestContact(async (shared, callback) => {
-        //         if (shared && callback) {
-        //             console.log(callback);
-        //             const contact = callback.responseUnsafe.contact;
-        //             const name = `${contact.first_name} ${contact.last_name}`;
-        //             const phone = contact.phone_number;
-        //             n.value = `${contact.first_name} ${contact.last_name}`;
-        //             ph.value = phone;
-        //             setCheckmark(fill_tg);
-        //         }
-        //     });
+            // await tg.requestContact(async (shared, callback) => {
+            //     if (shared && callback) {
+            //         console.log(callback);
+            //         const contact = callback.responseUnsafe.contact;
+            //         const name = `${contact.first_name} ${contact.last_name}`;
+            //         const phone = contact.phone_number;
+            //         n.value = `${contact.first_name} ${contact.last_name}`;
+            //         ph.value = phone;
+            //         setCheckmark(fill_tg);
+            //     }
+            // });
         // });
 
         async function getCarBrandsAndModels() {
@@ -775,7 +776,7 @@
                         method: 'POST'
                     });
                     const values = await response.json();
-                     localStorage.setItem('check', JSON.stringify(Object.values(values)));
+                     localStorage.setItem('car_values', JSON.stringify(Object.values(values)));
                     car_values = Object.values(values);
                     // Обработка полученных данных
                     console.log(car_values);
@@ -820,7 +821,7 @@
         }
 
         async function getCheck() {
-            let car_values = JSON.parse(localStorage.getItem('ckeck'));
+            let check_values = JSON.parse(localStorage.getItem('check'));
             if (!car_values) {
                 try {
                     const response = await fetch('https://script.google.com/macros/s/AKfycbwYrU8yrhWPuSkQVEfpim5uxjYkU2uLw4Cu2REuw-uDgrTspRklRAp5qb77Sr8zg27D/exec', {
@@ -829,7 +830,7 @@
                     const values = await response.json();
                     localStorage.setItem('check', JSON.stringify(Object.values(values)));
     
-                    car_values =  Object.values(values);
+                    check_values =  Object.values(values);
                     // Обработка полученных данных
                     console.log(car_values);
                 } catch (err) {
@@ -840,7 +841,7 @@
 
             const checkSelect = document.getElementById("field_select-type");
 
-            const flatValues = car_values.flat();
+            const flatValues = check_values.flat();
 
             flatValues.forEach(option => {
               const optionElement = document.createElement('option');
@@ -938,6 +939,7 @@
             return { data, buttonValues };
         }
 
+        fill_tg.addEventListener('click', async () => {
         // tg.onEvent('mainButtonClicked', async (event) => {
         //     tg.MainButton.showProgress(true);
 
@@ -984,7 +986,7 @@
                 // });
                 // tg.MainButton.hideProgress();
             }
-        // });
+        });
 
         $(document).ready(function() {
             // Генерируем параметры для выбора даты
