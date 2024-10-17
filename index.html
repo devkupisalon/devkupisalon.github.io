@@ -723,15 +723,15 @@
         // tg.enableClosingConfirmation();
         // tg.setBottomBarColor("bottom_bar_bg_color");
 
-        const {
-            bg_color,
-            text_color,
-            hint_color,
-            button_color,
-            button_text_color,
-            secondary_bg_color,
-            header_bg_color
-        } = Telegram.WebApp.themeParams;
+        // const {
+        //     bg_color,
+        //     text_color,
+        //     hint_color,
+        //     button_color,
+        //     button_text_color,
+        //     secondary_bg_color,
+        //     header_bg_color
+        // } = Telegram.WebApp.themeParams;
 
         const brands = 'Cars Brands';
         const pass = 'for_pass';
@@ -771,6 +771,7 @@
 
         async function getCarBrandsAndModels() {
             let car_values = JSON.parse(localStorage.getItem('car_values'));
+            console.log(car_values);
             if (!car_values) {
                 try {
                     const response = await fetch(`https://script.google.com/macros/s/AKfycbxm7MN6eie82BvGYo_fTD_62WxS7eoVLHFTQ4DQ9qo1NEpIYxJCK0fBntN1VnbAR028/exec`, {
@@ -822,7 +823,7 @@
         }
 
         async function getCheck() {
-            let check_values /* = JSON.parse(localStorage.getItem('check')); */
+            let check_values = JSON.parse(localStorage.getItem('check'));
             console.log(check_values);
             if (!check_values) {
                 try {
@@ -832,7 +833,7 @@
                     const values = await response.json();
                     localStorage.setItem('check', JSON.stringify(Object.values(values)));
     
-                    check_values =  Object.values(values);
+                    check_values = Object.values(values);
                     // Обработка полученных данных
                     console.log(check_values);
                 } catch (err) {
