@@ -942,7 +942,8 @@
             return { data, buttonValues };
         }
 
-        fill_tg.addEventListener('click', async () => {
+        fill_tg.addEventListener('click', async (event) => {
+            event.preventDefault(); 
         // tg.onEvent('mainButtonClicked', async (event) => {
         //     tg.MainButton.showProgress(true);
 
