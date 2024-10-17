@@ -600,8 +600,8 @@
                 <div class="input-label" id="car-number-label">Госномер</div>
                 <input class="input" type="text" id="car-number" placeholder="А 777 АA 777" required>
 
-                <p id="fill-text">Вы можете заполнить ФИО и номер телефона из телеграма (проверьте заполнены ли у вас имя и фамилия в тг)</p>
-                <button class="fill-tg" id="autofill-tg">Поделиться контактом</button>
+<!--                 <p id="fill-text">Вы можете заполнить ФИО и номер телефона из телеграма (проверьте заполнены ли у вас имя и фамилия в тг)</p>
+                <button class="fill-tg" id="autofill-tg">Поделиться контактом</button> -->
 
                 <div class="input-label" id="date-label">Дата</div>
                 <select class="input-date" id="date" required></select>
@@ -708,17 +708,18 @@
   </div>
 
     <script>
-        const tg = window.Telegram.WebApp;
+        // const tg = window.Telegram.WebApp;
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const success = urlParams.get('success');
-        const manager = tg.initDataUnsafe.start_param;
-        const chat_id = tg.initDataUnsafe.user.id;
+        const manager = urlParams.get('manager');
+        // const manager = tg.initDataUnsafe.start_param;
+        // const chat_id = tg.initDataUnsafe.user.id;
         
-        tg.ready();
-        tg.expand();
-        tg.enableClosingConfirmation();
-        tg.setBottomBarColor("bottom_bar_bg_color");
+        // tg.ready();
+        // tg.expand();
+        // tg.enableClosingConfirmation();
+        // tg.setBottomBarColor("bottom_bar_bg_color");
 
         const {
             bg_color,
@@ -752,33 +753,36 @@
         const n = document.getElementById('manager-name');
         const ph = document.getElementById('manager-phone');
 
-        fill_tg.addEventListener('click', async () => {
-            await tg.requestContact(async (shared, callback) => {
-                if (shared && callback) {
-                    console.log(callback);
-                    const contact = callback.responseUnsafe.contact;
-                    const name = `${contact.first_name} ${contact.last_name}`;
-                    const phone = contact.phone_number;
-                    n.value = `${contact.first_name} ${contact.last_name}`;
-                    ph.value = phone;
-                    setCheckmark(fill_tg);
-                }
-            });
-        });
+        // fill_tg.addEventListener('click', async () => {
+        //     await tg.requestContact(async (shared, callback) => {
+        //         if (shared && callback) {
+        //             console.log(callback);
+        //             const contact = callback.responseUnsafe.contact;
+        //             const name = `${contact.first_name} ${contact.last_name}`;
+        //             const phone = contact.phone_number;
+        //             n.value = `${contact.first_name} ${contact.last_name}`;
+        //             ph.value = phone;
+        //             setCheckmark(fill_tg);
+        //         }
+        //     });
+        // });
 
         async function getCarBrandsAndModels() {
-            let car_values;
-            try {
-                const response = await fetch(`https://script.google.com/macros/s/AKfycbxm7MN6eie82BvGYo_fTD_62WxS7eoVLHFTQ4DQ9qo1NEpIYxJCK0fBntN1VnbAR028/exec`, {
-                    method: 'POST'
-                });
-                const values = await response.json();
-                car_values = Object.values(values);
-                // Обработка полученных данных
-                console.log(car_values);
-            } catch (err) {
-                // Обработка ошибок
-                console.error(err);
+            let car_values = JSON.parse(localStorage.getItem('car_values'));
+            if (!car_values) {
+                try {
+                    const response = await fetch(`https://script.google.com/macros/s/AKfycbxm7MN6eie82BvGYo_fTD_62WxS7eoVLHFTQ4DQ9qo1NEpIYxJCK0fBntN1VnbAR028/exec`, {
+                        method: 'POST'
+                    });
+                    const values = await response.json();
+                     localStorage.setItem('check', JSON.stringify(Object.values(values)));
+                    car_values = Object.values(values);
+                    // Обработка полученных данных
+                    console.log(car_values);
+                } catch (err) {
+                    // Обработка ошибок
+                    console.error(err);
+                }
             }
 
             const carBrandsSelect = document.getElementById("car-brands-select");
@@ -816,18 +820,22 @@
         }
 
         async function getCheck() {
-            let car_values;
-            try {
-                const response = await fetch('https://script.google.com/macros/s/AKfycbwYrU8yrhWPuSkQVEfpim5uxjYkU2uLw4Cu2REuw-uDgrTspRklRAp5qb77Sr8zg27D/exec', {
-                    method: 'POST'
-                });
-                const values = await response.json();
-                car_values = Object.values(values);
-                // Обработка полученных данных
-                console.log(car_values);
-            } catch (err) {
-                // Обработка ошибок
-                console.error(err);
+            let car_values = JSON.parse(localStorage.getItem('ckeck'));
+            if (!car_values) {
+                try {
+                    const response = await fetch('https://script.google.com/macros/s/AKfycbwYrU8yrhWPuSkQVEfpim5uxjYkU2uLw4Cu2REuw-uDgrTspRklRAp5qb77Sr8zg27D/exec', {
+                        method: 'POST'
+                    });
+                    const values = await response.json();
+                    localStorage.setItem('check', JSON.stringify(Object.values(values)));
+    
+                    car_values =  Object.values(values);
+                    // Обработка полученных данных
+                    console.log(car_values);
+                } catch (err) {
+                    // Обработка ошибок
+                    console.error(err);
+                }
             }
 
             const checkSelect = document.getElementById("field_select-type");
@@ -843,7 +851,7 @@
         }
 
         async function preload() {
-            tg.MainButton.hide();
+            // tg.MainButton.hide();
             const container = document.querySelector('.container');
             container.style.display = "none";
             await getCheck();
@@ -851,11 +859,11 @@
             const preloader = document.querySelector('.spinner-box');
             preloader.style.display = "none";
             container.style.display = "flex";
-            tg.MainButton.show();
-            tg.MainButton.setParams({
-                has_shine_effect: true,
-                text: 'Записаться',
-            });
+            // tg.MainButton.show();
+            // tg.MainButton.setParams({
+            //     has_shine_effect: true,
+            //     text: 'Записаться',
+            // });
         }
 
         preload();
@@ -930,8 +938,8 @@
             return { data, buttonValues };
         }
 
-        tg.onEvent('mainButtonClicked', async (event) => {
-            tg.MainButton.showProgress(true);
+        // tg.onEvent('mainButtonClicked', async (event) => {
+        //     tg.MainButton.showProgress(true);
 
             const { data : {
                 name,
@@ -961,20 +969,20 @@
                       iframe.style.display = "block";
                     }, 3000);
                     
-                    tg.MainButton.hideProgress();
-                    tg.MainButton.hide();
+                    // tg.MainButton.hideProgress();
+                    // tg.MainButton.hide();
                 } catch (error) {
-                    tg.showPopup({
-                        title: 'Error',
-                        message: error
-                    });
-                    tg.MainButton.hideProgress();
+                    // tg.showPopup({
+                    //     title: 'Error',
+                    //     message: error
+                    // });
+                    // tg.MainButton.hideProgress();
                 }
             } else {
-                tg.showPopup({
-                    message: 'Вначале заполните все данные'
-                });
-                tg.MainButton.hideProgress();
+                // tg.showPopup({
+                //     message: 'Вначале заполните все данные'
+                // });
+                // tg.MainButton.hideProgress();
             }
         });
 
