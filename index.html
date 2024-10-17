@@ -769,7 +769,7 @@
         // });
 
         async function getCarBrandsAndModels() {
-            let car_values = /* JSON.parse(localStorage.getItem('car_values')) */;
+            let car_values /* = JSON.parse(localStorage.getItem('car_values')); */
             if (!car_values) {
                 try {
                     const response = await fetch(`https://script.google.com/macros/s/AKfycbxm7MN6eie82BvGYo_fTD_62WxS7eoVLHFTQ4DQ9qo1NEpIYxJCK0fBntN1VnbAR028/exec`, {
